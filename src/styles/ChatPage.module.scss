@@ -1,0 +1,97 @@
+@use "@carbon/colors";
+@use "@carbon/react/scss/spacing";
+
+.messagesArea {
+    display: flex;
+    flex-direction: column;
+
+    .messageTile {
+        margin-right: spacing.$spacing-03;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        align-self: flex-end;
+        background-color: colors.$gray-80;
+        color: colors.$gray-10;
+        font-size: medium;
+        border-radius: 15px;
+        margin-top: spacing.$spacing-04;
+        padding-right: spacing.$spacing-08;
+        max-width: fit-content;
+
+        svg {
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            right: spacing.$spacing-04;
+        }
+    }
+
+    .messageTile:hover {
+        svg {
+            display: inline-block;
+        }
+    }
+
+    .responseTile {
+        margin-left: spacing.$spacing-03;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        align-self: flex-start;
+        background-color: colors.$gray-50;
+        color: colors.$gray-10;
+        font-size: medium;
+        border-radius: 15px;
+        margin-top: spacing.$spacing-04;
+        max-width: fit-content;
+    }
+
+    .responseTileSkeleton {
+        margin-left: spacing.$spacing-03;
+        height: 72px;
+        width: 200px;
+        border-radius: 15px;
+    }
+
+    .responseTileSkeleton::before {
+        border-radius: 15px;
+    }
+}
+
+.textArea {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    textarea {
+        resize: none;
+        background-color: white;
+        outline: 0px !important;
+        font-size: medium;
+    }
+
+    textarea::placeholder {
+        font-size: medium;
+    }
+
+    button,
+    .inlineLoading {
+        width: 5%;
+        padding: 0;
+        background-color: white;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        border-bottom: 1px solid colors.$gray-50;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.page {
+    height: 100vh;
+    background-color: colors.$gray-10;
+}
