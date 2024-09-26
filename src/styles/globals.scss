@@ -5,3 +5,19 @@
 @use "@carbon/react/scss/spacing";
 @use "@carbon/grid";
 @use "@carbon/type";
+
+#WACContainer.WACContainer .WACFooterButtonComponents.WACFooterButtonComponents--column .WACButtonItem.WACButtonItem {
+   
+    align-items: center;
+    width: 80% !important;
+    border-radius: 10px !important; /* Makes the corners rounded */
+}
+
+#WACContainer.WACContainer .WACFooterButtonComponents.WACFooterButtonComponents--column .WACButtonItem.WACButtonItem:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+#WACContainer.WACContainer .WACFooterButtonComponents {
+    justify-content: center;
+    align-items: center;
+}

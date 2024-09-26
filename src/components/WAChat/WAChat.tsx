@@ -21,6 +21,7 @@ import {
 import { BrightnessContrast, Flag, Maximize, Renew, ShrinkScreen } from "@carbon/icons-react";
 
 import styles from "~/styles/WAChat.module.scss";
+import { TextInput } from "@carbon/react";
 
 const maximizedStyle: { [key: string]: string } = {
   "BASE-height": "100%",
@@ -94,25 +95,139 @@ const WAChat = () => {
   const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-  const [userPosition, setUserPosition] = useState<string>("non-manager");
+  const [userPosition, setUserPosition] = useState<string>("Vice President");
+  const [userName, setUserName] = useState<string>("Thomas");
 
   const onPreSend = (event: any) => {
-    if (event.data.input && event.data.input.text === "") {
+    console.log(event.data);
+    if (event.data.input) {
       event.data.context.skills["actions skill"] = event.data.context.skills["actions skill"] || {};
       event.data.context.skills["actions skill"].skill_variables =
         event.data.context.skills["actions skill"].skill_variables || {};
-      event.data.context.skills["actions skill"].skill_variables.employee_position = userPosition;
+      event.data.context.skills["actions skill"].skill_variables.user_role = userPosition;
+      event.data.context.skills["actions skill"].skill_variables.user_name = userName;
     }
   };
 
-  const carouselButtonHandler = (event: any) => {
+  const carouselButtonHandler = (event: any, instance: any) => {
     const { customEventType, messageItem } = event;
     // The 'custom_event_name' property comes from the button response type with button_type of custom_event.
-    if (
-      customEventType === "buttonItemClicked" &&
-      messageItem.custom_event_name === "hotel_1_selection"
-    ) {
-      alert("THIS IS AN ALERT!!!");
+    if (customEventType === "buttonItemClicked") {
+      const sendObjectBase = {
+        input: {
+          message_type: "text",
+          text: "",
+        },
+        context: {
+          skills: {
+            ["actions skill"]: {
+              skill_variables: {
+                selected_hotel: 0, // Default value, will be overridden based on the case
+                hotel_selection_action: "", // Default value, will be overridden based on the case
+              },
+            },
+          },
+        },
+      };
+
+      const sendOptions = {
+        silent: true,
+      };
+
+      switch (messageItem.custom_event_name) {
+        case "hotel_1_selection":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 0;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "route";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_1_details":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 0;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "details";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_1_book":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 0;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "book";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_2_selection":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 1;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "route";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_2_details":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 1;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "details";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_2_book":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 1;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "book";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_3_selection":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 2;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "route";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_3_details":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 2;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "details";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_3_book":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 2;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "book";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_4_selection":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 3;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "route";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_4_details":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 3;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "details";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_4_book":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 3;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "book";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_5_selection":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 4;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "route";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_5_details":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 4;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "details";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        case "hotel_5_book":
+          sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 4;
+          sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
+            "book";
+          instance.send(sendObjectBase, sendOptions);
+          break;
+        default:
+          break;
+      }
     }
   };
 
@@ -127,11 +242,10 @@ const WAChat = () => {
     Object.keys(darkStyle).forEach((key) => {
       newObj[key] = computedStyle.getPropertyValue(`--WatsonAssistantChat-${key}`);
     });
-    console.log(newObj);
 
     setInitialStyle({ ...defaultStyle, ...customStyle });
 
-    instance.on({ type: "messageItemCustom", handler: carouselButtonHandler });
+    instance.on({ type: "messageItemCustom", handler: carouselButtonHandler, instance });
 
     instance.updateCSSVariables(customStyle);
 
@@ -150,27 +264,18 @@ const WAChat = () => {
     });
   };
 
-  const ifUserPosition = (position: string) => {
-    return userPosition == position;
-  };
-
-  const chooseUserPosition = (position: string) => {
-    setIsChatOpen(false);
-    setUserPosition(position);
-  };
-
   return (
     <Theme theme={isDarkMode ? "g90" : "white"}>
-      <Header aria-label="RAGstar">
+      <Header aria-label="RAGnova">
         <HeaderName href="/" prefix="IBM |">
-          RAGstar
+          RAGnova
         </HeaderName>
         <HeaderGlobalBar>
           <RadioButtonGroup
             style={{ marginLeft: "100px" }}
             legendText="User Position"
             name="radio-button-group"
-            defaultSelected="non-manager"
+            defaultSelected="Vice President"
             onChange={(value: any) => {
               setUserPosition(value);
               if (instance !== null) {
@@ -182,8 +287,7 @@ const WAChat = () => {
                         event.data.context.skills["actions skill"] || {};
                       event.data.context.skills["actions skill"].skill_variables =
                         event.data.context.skills["actions skill"].skill_variables || {};
-                      event.data.context.skills["actions skill"].skill_variables.employee_position =
-                        value;
+                      event.data.context.skills["actions skill"].skill_variables.user_role = value;
                     }
                   },
                 });
@@ -191,9 +295,13 @@ const WAChat = () => {
               }
             }}
           >
-            <RadioButton labelText="Manager" value="manager" id="radio-1" />
-            <RadioButton labelText="Non-Manager" value="non-manager" id="radio-2" />
+            <RadioButton labelText="Team Member" value="Team Member" id="radio-1" />
+            <RadioButton labelText="Vice President" value="Vice President" id="radio-2" />
           </RadioButtonGroup>
+          <div className={styles.userNameWrapper}>
+            <span>User Name:</span>
+            <TextInput id="text-input-1" type="text" labelText="" helperText="" value={userName} />
+          </div>
           <HeaderGlobalAction aria-label="Mode switch">
             <BrightnessContrast
               size={20}
