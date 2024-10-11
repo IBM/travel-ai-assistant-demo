@@ -22,6 +22,7 @@ import { BrightnessContrast, Flag, Maximize, Renew, ShrinkScreen } from "@carbon
 
 import styles from "~/styles/WAChat.module.scss";
 import { TextInput } from "@carbon/react";
+import { Button } from "@carbon/react";
 
 const maximizedStyle: { [key: string]: string } = {
   "BASE-height": "100%",
@@ -248,8 +249,9 @@ const WAChat = () => {
     instance.on({ type: "messageItemCustom", handler: carouselButtonHandler, instance });
 
     instance.updateCSSVariables(customStyle);
+    instance.doAutoScroll();
 
-    instance.on({ type: "pre:send", handler: onPreSend });
+    //instance.on({ type: "pre:send", handler: onPreSend });
     instance.on({
       type: "window:open",
       handler: () => {
@@ -278,21 +280,6 @@ const WAChat = () => {
             defaultSelected="Vice President"
             onChange={(value: any) => {
               setUserPosition(value);
-              if (instance !== null) {
-                instance.on({
-                  type: "pre:send",
-                  handler: (event: any) => {
-                    if (event.data.input && event.data.input.text === "") {
-                      event.data.context.skills["actions skill"] =
-                        event.data.context.skills["actions skill"] || {};
-                      event.data.context.skills["actions skill"].skill_variables =
-                        event.data.context.skills["actions skill"].skill_variables || {};
-                      event.data.context.skills["actions skill"].skill_variables.user_role = value;
-                    }
-                  },
-                });
-                instance.restartConversation();
-              }
             }}
           >
             <RadioButton labelText="Team Member" value="Team Member" id="radio-1" />
@@ -300,7 +287,41 @@ const WAChat = () => {
           </RadioButtonGroup>
           <div className={styles.userNameWrapper}>
             <span>User Name:</span>
-            <TextInput id="text-input-1" type="text" labelText="" helperText="" value={userName} />
+            <TextInput
+              id="text-input-1"
+              type="text"
+              labelText=""
+              helperText=""
+              value={userName}
+              onChange={(evt: any) => {
+                setUserName(evt.target.value);
+              }}
+            />
+            <Button
+              labelText=""
+              onClick={() => {
+                if (instance !== null) {
+                  instance.on({
+                    type: "pre:send",
+                    handler: (event: any) => {
+                      if (event.data.input && event.data.input.text === "") {
+                        event.data.context.skills["actions skill"] =
+                          event.data.context.skills["actions skill"] || {};
+                        event.data.context.skills["actions skill"].skill_variables =
+                          event.data.context.skills["actions skill"].skill_variables || {};
+                        event.data.context.skills["actions skill"].skill_variables.user_role =
+                          userPosition;
+                        event.data.context.skills["actions skill"].skill_variables.user_name =
+                          userName;
+                      }
+                    },
+                  });
+                  instance.restartConversation();
+                }
+              }}
+            >
+              Apply Settings
+            </Button>
           </div>
           <HeaderGlobalAction aria-label="Mode switch">
             <BrightnessContrast
