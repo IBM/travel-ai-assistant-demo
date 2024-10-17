@@ -18,11 +18,19 @@ import {
   RadioButton,
   Theme,
 } from "@carbon/react";
-import { BrightnessContrast, Flag, Maximize, Renew, ShrinkScreen } from "@carbon/icons-react";
+import {
+  BrightnessContrast,
+  Flag,
+  Maximize,
+  Renew,
+  Settings,
+  ShrinkScreen,
+} from "@carbon/icons-react";
 
 import styles from "~/styles/WAChat.module.scss";
 import { TextInput } from "@carbon/react";
 import { Button } from "@carbon/react";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 
 const maximizedStyle: { [key: string]: string } = {
   "BASE-height": "100%",
@@ -273,56 +281,81 @@ const WAChat = () => {
           RAGnova
         </HeaderName>
         <HeaderGlobalBar>
-          <RadioButtonGroup
-            style={{ marginLeft: "100px" }}
-            legendText="User Position"
-            name="radio-button-group"
-            defaultSelected="Vice President"
-            onChange={(value: any) => {
-              setUserPosition(value);
-            }}
-          >
-            <RadioButton labelText="Team Member" value="Team Member" id="radio-1" />
-            <RadioButton labelText="Vice President" value="Vice President" id="radio-2" />
-          </RadioButtonGroup>
-          <div className={styles.userNameWrapper}>
-            <span>User Name:</span>
-            <TextInput
-              id="text-input-1"
-              type="text"
-              labelText=""
-              helperText=""
-              value={userName}
-              onChange={(evt: any) => {
-                setUserName(evt.target.value);
-              }}
-            />
-            <Button
-              labelText=""
-              onClick={() => {
-                if (instance !== null) {
-                  instance.on({
-                    type: "pre:send",
-                    handler: (event: any) => {
-                      if (event.data.input && event.data.input.text === "") {
-                        event.data.context.skills["actions skill"] =
-                          event.data.context.skills["actions skill"] || {};
-                        event.data.context.skills["actions skill"].skill_variables =
-                          event.data.context.skills["actions skill"].skill_variables || {};
-                        event.data.context.skills["actions skill"].skill_variables.user_role =
-                          userPosition;
-                        event.data.context.skills["actions skill"].skill_variables.user_name =
-                          userName;
-                      }
-                    },
-                  });
-                  instance.restartConversation();
-                }
-              }}
-            >
-              Apply Settings
-            </Button>
-          </div>
+          <HeaderGlobalAction aria-label="Settings">
+            <Popover>
+              <PopoverTrigger>
+                <Settings />
+              </PopoverTrigger>
+              <PopoverContent>
+                <>
+                  <div className="w-60">
+                    <div className="m-4">
+                      <RadioButtonGroup
+                        legendText="User Position"
+                        name="radio-button-group"
+                        defaultSelected={userPosition}
+                        onChange={(value: any) => {
+                          setUserPosition(value);
+                        }}
+                      >
+                        <RadioButton labelText="Team Member" value="Team Member" id="radio-1" />
+                        <RadioButton
+                          labelText="Vice President"
+                          value="Vice President"
+                          id="radio-2"
+                        />
+                      </RadioButtonGroup>
+                    </div>
+                    <div className="m-4">
+                      <TextInput
+                        id="text-input-1"
+                        type="text"
+                        labelText="User Name"
+                        helperText=""
+                        className="white"
+                        value={userName}
+                        onChange={(evt: any) => {
+                          setUserName(evt.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="mt-4 w-full">
+                      <Button
+                        labelText=""
+                        className="w-full"
+                        onClick={() => {
+                          if (instance !== null) {
+                            instance.on({
+                              type: "pre:send",
+                              handler: (event: any) => {
+                                if (event.data.input && event.data.input.text === "") {
+                                  event.data.context.skills["actions skill"] =
+                                    event.data.context.skills["actions skill"] || {};
+                                  event.data.context.skills["actions skill"].skill_variables =
+                                    event.data.context.skills["actions skill"].skill_variables ||
+                                    {};
+                                  event.data.context.skills[
+                                    "actions skill"
+                                  ].skill_variables.user_role = userPosition;
+                                  event.data.context.skills[
+                                    "actions skill"
+                                  ].skill_variables.user_name = userName;
+                                }
+                              },
+                            });
+                            instance.restartConversation();
+                          }
+                        }}
+                      >
+                        Apply Settings
+                      </Button>
+                    </div>
+                  </div>
+                </>
+              </PopoverContent>
+            </Popover>
+          </HeaderGlobalAction>
+
           <HeaderGlobalAction aria-label="Mode switch">
             <BrightnessContrast
               size={20}
