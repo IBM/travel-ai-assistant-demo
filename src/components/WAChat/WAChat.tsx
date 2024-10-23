@@ -105,10 +105,9 @@ const WAChat = () => {
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const [userPosition, setUserPosition] = useState<string>("Vice President");
-  const [userName, setUserName] = useState<string>("Thomas");
+  const [userName, setUserName] = useState<string>("Joe");
 
   const onPreSend = (event: any) => {
-    console.log(event.data);
     if (event.data.input) {
       event.data.context.skills["actions skill"] = event.data.context.skills["actions skill"] || {};
       event.data.context.skills["actions skill"].skill_variables =
@@ -240,6 +239,17 @@ const WAChat = () => {
     }
   };
 
+  const autoScroll = () => {
+    const chatWindow = document.getElementById("WAC__messages");
+   
+    if (chatWindow) {
+      chatWindow.scrollTo({
+        top: chatWindow.scrollHeight,
+        behavior: "smooth", // Enable smooth scrolling
+      });
+    }
+  };
+
   const onBeforeRender: any = (instance: WebChatInstance) => {
     setInstance(instance);
     const computedStyle = getComputedStyle(document.body);
@@ -257,9 +267,10 @@ const WAChat = () => {
     instance.on({ type: "messageItemCustom", handler: carouselButtonHandler, instance });
 
     instance.updateCSSVariables(customStyle);
-    instance.doAutoScroll();
 
-    //instance.on({ type: "pre:send", handler: onPreSend });
+    instance.doAutoScroll();
+    instance.on({ type: "receive", handler: () => autoScroll() });
+    instance.on({ type: "pre:send", handler: onPreSend });
     instance.on({
       type: "window:open",
       handler: () => {
