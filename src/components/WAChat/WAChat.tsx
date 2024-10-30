@@ -117,7 +117,7 @@ const WAChat = () => {
     }
   };
 
-  const carouselButtonHandler = (event: any, instance: any) => {
+  const carouselButtonHandler = (event: any, instance: WebChatInstance) => {
     const { customEventType, messageItem } = event;
     // The 'custom_event_name' property comes from the button response type with button_type of custom_event.
     if (customEventType === "buttonItemClicked") {
@@ -241,10 +241,10 @@ const WAChat = () => {
 
   const autoScroll = () => {
     const chatWindow = document.getElementById("WAC__messages");
-   
+
     if (chatWindow) {
       chatWindow.scrollTo({
-        top: chatWindow.scrollHeight,
+        top: chatWindow.scrollHeight + 1000,
         behavior: "smooth", // Enable smooth scrolling
       });
     }
@@ -268,8 +268,7 @@ const WAChat = () => {
 
     instance.updateCSSVariables(customStyle);
 
-    instance.doAutoScroll();
-    instance.on({ type: "receive", handler: () => autoScroll() });
+    instance.on({ type: "receive", handler: autoScroll });
     instance.on({ type: "pre:send", handler: onPreSend });
     instance.on({
       type: "window:open",
@@ -332,7 +331,7 @@ const WAChat = () => {
                     </div>
                     <div className="mt-4 w-full">
                       <Button
-                        labelText=""
+                        labeltext=""
                         className="w-full"
                         onClick={() => {
                           if (instance !== null) {
