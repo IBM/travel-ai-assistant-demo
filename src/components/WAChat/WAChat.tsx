@@ -263,6 +263,7 @@ const WAChat = () => {
     });
 
     setInitialStyle({ ...defaultStyle, ...customStyle });
+    
 
     instance.on({ type: "messageItemCustom", handler: carouselButtonHandler, instance });
 
