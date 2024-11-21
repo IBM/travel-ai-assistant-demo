@@ -243,6 +243,7 @@ const WAChat = () => {
     const chatWindow = document.getElementById("WAC__messages");
 
     if (chatWindow) {
+      console.log("Scrolling...")
       chatWindow.scrollTo({
         top: chatWindow.scrollHeight + 1000,
         behavior: "smooth", // Enable smooth scrolling
