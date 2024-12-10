@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   setEnableDebug,
@@ -108,7 +108,7 @@ const WAChat = () => {
   const [userName, setUserName] = useState<string>("Joe");
 
   const onPreSend = (event: any) => {
-    if (event.data.input) {
+    if (event.data.history.is_welcome_request) {
       event.data.context.skills["actions skill"] = event.data.context.skills["actions skill"] || {};
       event.data.context.skills["actions skill"].skill_variables =
         event.data.context.skills["actions skill"].skill_variables || {};
@@ -139,7 +139,7 @@ const WAChat = () => {
       };
 
       const sendOptions = {
-        silent: true,
+        silent: false,
       };
 
       switch (messageItem.custom_event_name) {
@@ -243,7 +243,6 @@ const WAChat = () => {
     const chatWindow = document.getElementById("WAC__messages");
 
     if (chatWindow) {
-      console.log("Scrolling...");
       chatWindow.scrollTo({
         top: chatWindow.scrollHeight + 1000,
         behavior: "smooth", // Enable smooth scrolling
@@ -253,10 +252,10 @@ const WAChat = () => {
 
   const preReceive = (event: any) => {
     const generic = event.data.output.generic;
+
     for (let i = 0; i < generic.length; i++) {
       const item = generic[i];
       if (item.response_type === "user_defined") {
-      
         item.response_type = "conversational_search";
         item.text = event.data.context.skills["actions skill"].skill_variables.generated_output;
         delete item.user_defined;
@@ -329,6 +328,7 @@ const WAChat = () => {
     instance.on({ type: "pre:receive", handler: preReceive });
     instance.on({ type: "receive", handler: autoScroll });
     instance.on({ type: "pre:send", handler: onPreSend });
+    instance.restartConversation();
     instance.on({
       type: "window:open",
       handler: () => {
@@ -350,10 +350,19 @@ const WAChat = () => {
           RAGnova
         </HeaderName>
         <HeaderGlobalBar>
-          <HeaderGlobalAction aria-label="Settings">
+          <div
+            style={{
+              display: "flex",
+              width: "48px",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Popover>
               <PopoverTrigger>
-                <Settings />
+                <>
+                  <Settings />
+                </>
               </PopoverTrigger>
               <PopoverContent>
                 <>
@@ -394,23 +403,10 @@ const WAChat = () => {
                         className="w-full"
                         onClick={() => {
                           if (instance !== null) {
+                            instance.off({ type: "pre:send" });
                             instance.on({
                               type: "pre:send",
-                              handler: (event: any) => {
-                                if (event.data.input && event.data.input.text === "") {
-                                  event.data.context.skills["actions skill"] =
-                                    event.data.context.skills["actions skill"] || {};
-                                  event.data.context.skills["actions skill"].skill_variables =
-                                    event.data.context.skills["actions skill"].skill_variables ||
-                                    {};
-                                  event.data.context.skills[
-                                    "actions skill"
-                                  ].skill_variables.user_role = userPosition;
-                                  event.data.context.skills[
-                                    "actions skill"
-                                  ].skill_variables.user_name = userName;
-                                }
-                              },
+                              handler: onPreSend,
                             });
                             instance.restartConversation();
                           }
@@ -423,8 +419,7 @@ const WAChat = () => {
                 </>
               </PopoverContent>
             </Popover>
-          </HeaderGlobalAction>
-
+          </div>
           <HeaderGlobalAction aria-label="Mode switch">
             <BrightnessContrast
               size={20}
