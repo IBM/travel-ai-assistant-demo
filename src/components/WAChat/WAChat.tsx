@@ -90,7 +90,7 @@ const webChatConfigs: { [key: string]: WebChatConfig } = {
     serviceInstanceID: serviceInstanceID,
     //@ts-ignore
     region: "aws-us-east-1",
-    showCloseAndRestartButton: true,
+    headerConfig: { showRestartButton: true },
   },
 };
 
@@ -243,11 +243,69 @@ const WAChat = () => {
     const chatWindow = document.getElementById("WAC__messages");
 
     if (chatWindow) {
-      console.log("Scrolling...")
+      console.log("Scrolling...");
       chatWindow.scrollTo({
         top: chatWindow.scrollHeight + 1000,
         behavior: "smooth", // Enable smooth scrolling
       });
+    }
+  };
+
+  const preReceive = (event: any) => {
+    const generic = event.data.output.generic;
+    for (let i = 0; i < generic.length; i++) {
+      const item = generic[i];
+      if (item.response_type === "user_defined") {
+      
+        item.response_type = "conversational_search";
+        item.text = event.data.context.skills["actions skill"].skill_variables.generated_output;
+        delete item.user_defined;
+        (item.citations_title = "How do we know?"), // The title of the citations
+          (item.citations = [
+            // The citations for the generated response
+            {
+              title: null,
+              text: event.data.context.skills["actions skill"].skill_variables.passage_1,
+              body: event.data.context.skills["actions skill"].skill_variables.passage_1,
+              search_result_idx: 0,
+              range_start: 0,
+              range_end: 0,
+            },
+            {
+              title: null,
+              text: event.data.context.skills["actions skill"].skill_variables.passage_2,
+              body: event.data.context.skills["actions skill"].skill_variables.passage_2,
+              search_result_idx: 1,
+              range_start: 0,
+              range_end: 0,
+            },
+          ]),
+          (item.confidence_scores = {}),
+          (item.response_length_option = "concise"), // The response length option
+          (item.search_results = [
+            // The search results
+            {
+              result_metadata: {},
+
+              id: "result_1",
+
+              title: null,
+
+              body: event.data.context.skills["actions skill"].skill_variables.passage_1,
+            },
+            {
+              result_metadata: {},
+
+              id: null,
+
+              title: "Test Title",
+
+              body: event.data.context.skills["actions skill"].skill_variables.passage_2,
+            },
+          ]),
+          (item.disclaimer = "Accuracy of generated answers may vary."); // Disclaimer text
+        event.updateHistory = true;
+      }
     }
   };
 
@@ -264,12 +322,11 @@ const WAChat = () => {
     });
 
     setInitialStyle({ ...defaultStyle, ...customStyle });
-    
 
     instance.on({ type: "messageItemCustom", handler: carouselButtonHandler, instance });
 
     instance.updateCSSVariables(customStyle);
-
+    instance.on({ type: "pre:receive", handler: preReceive });
     instance.on({ type: "receive", handler: autoScroll });
     instance.on({ type: "pre:send", handler: onPreSend });
     instance.on({
@@ -393,27 +450,7 @@ const WAChat = () => {
         config={selectWebChatConfig("RagNova")}
         onBeforeRender={(instance: WebChatInstance) => onBeforeRender(instance)}
       />
-      {isChatOpen && (
-        <IconButton
-          label="Restart conversation"
-          className={
-            isFullScreen
-              ? isDarkMode
-                ? styles.restartButtonMaximizedDark
-                : styles.restartButtonMaximizedLight
-              : isDarkMode
-              ? styles.restartButtonShrinkedDark
-              : styles.restartButtonShrinkedLight
-          }
-          onClick={() => {
-            if (instance !== null) {
-              instance.restartConversation();
-            }
-          }}
-        >
-          <Renew size={20} />
-        </IconButton>
-      )}
+
       {isChatOpen &&
         (isFullScreen ? (
           <IconButton
