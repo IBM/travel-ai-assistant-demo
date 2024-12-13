@@ -97,7 +97,6 @@ const webChatConfigs: { [key: string]: WebChatConfig } = {
     //@ts-ignore
     region: "aws-us-east-1",
     headerConfig: { showRestartButton: true },
-    themeConfig: { carbonTheme: "g10" },
   },
 };
 
