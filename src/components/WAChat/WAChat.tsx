@@ -31,6 +31,7 @@ import styles from "~/styles/WAChat.module.scss";
 import { TextInput } from "@carbon/react";
 import { Button } from "@carbon/react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { useTheme } from "@carbon/react";
 
 const maximizedStyle: { [key: string]: string } = {
   "BASE-height": "100%",
@@ -55,20 +56,25 @@ const defaultStyle: { [key: string]: string } = {
   "BASE-right-position": "32px",
   "BASE-bottom-position": "32px",
   "BASE-box-shadow": "",
-  "CARBON-focus": "#ffffff",
+  "PRIMARY-color": "#ffffff",
+  "PRIMARY-color-text": "#000000",
+  "SECONDARY-color-text": "#000000",
   "CARBON-ui-03": "#f4f4f4",
+  button: "#000000",
+  "shell-background": "#ffffff",
 };
 
 const darkStyle: { [key: string]: string } = {
-  "CARBON-text-01": "#f4f4f4",
-  "CARBON-text-03": "#f4f4f4",
-  "CARBON-ui-background": "#393939",
-  "CARBON-ui-01": "#262626",
-  "CARBON-ui-03": "#525252",
-  "BRANDING-border-color": "#525252",
-  "BRANDING-background": "#393939",
-  "BRANDING-color-text-01": "#f4f4f4",
-  "CARBON-hover-ui": "#525252",
+  "PRIMARY-color": "#262626",
+
+  button: "#ffffff",
+  "button-text-hover": "#f4f4f4",
+
+  "CARBON-ui-03": "#f4f4f4",
+  "SECONDARY-color": "#262626",
+  "PRIMARY-color-text": "#ffffff",
+  "SECONDARY-color-text": "#ffffff",
+  "shell-background": "#262626",
 };
 
 const customStyle: { [key: string]: string } = {
@@ -91,6 +97,7 @@ const webChatConfigs: { [key: string]: WebChatConfig } = {
     //@ts-ignore
     region: "aws-us-east-1",
     headerConfig: { showRestartButton: true },
+    themeConfig: { carbonTheme: "g10" },
   },
 };
 
@@ -147,90 +154,105 @@ const WAChat = () => {
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 0;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "route";
+          sendObjectBase.input.text = "Show route to MINT office";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_1_details":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 0;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "details";
+          sendObjectBase.input.text = "Show more details";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_1_book":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 0;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "book";
+          sendObjectBase.input.text = "Book Hotel";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_2_selection":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 1;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "route";
+          sendObjectBase.input.text = "Show route to MINT office";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_2_details":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 1;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "details";
+          sendObjectBase.input.text = "Show more details";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_2_book":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 1;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "book";
+          sendObjectBase.input.text = "Book Hotel";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_3_selection":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 2;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "route";
+          sendObjectBase.input.text = "Show route to MINT office";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_3_details":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 2;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "details";
+          sendObjectBase.input.text = "Show more details";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_3_book":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 2;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "book";
+          sendObjectBase.input.text = "Book Hotel";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_4_selection":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 3;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "route";
+          sendObjectBase.input.text = "Show route to MINT office";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_4_details":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 3;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "details";
+          sendObjectBase.input.text = "Show more details";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_4_book":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 3;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "book";
+          sendObjectBase.input.text = "Book Hotel";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_5_selection":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 4;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "route";
+          sendObjectBase.input.text = "Show route to MINT office";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_5_details":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 4;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "details";
+          sendObjectBase.input.text = "Show more details";
           instance.send(sendObjectBase, sendOptions);
           break;
         case "hotel_5_book":
           sendObjectBase.context.skills["actions skill"].skill_variables.selected_hotel = 4;
           sendObjectBase.context.skills["actions skill"].skill_variables.hotel_selection_action =
             "book";
+          sendObjectBase.input.text = "Book Hotel";
           instance.send(sendObjectBase, sendOptions);
           break;
         default:
@@ -314,17 +336,18 @@ const WAChat = () => {
 
     const newObj: { [key: string]: string } = {};
     Object.keys(maximizedStyle).forEach((key) => {
-      newObj[key] = computedStyle.getPropertyValue(`--WatsonAssistantChat-${key}`);
+      newObj[key] = computedStyle.getPropertyValue(`--cds-chat-${key}`);
     });
     Object.keys(darkStyle).forEach((key) => {
-      newObj[key] = computedStyle.getPropertyValue(`--WatsonAssistantChat-${key}`);
+      newObj[key] = computedStyle.getPropertyValue(`--cds-chat-${key}`);
     });
+    console.log(computedStyle.getPropertyValue(`--cds-chat-PRIMARY-color`));
 
     setInitialStyle({ ...defaultStyle, ...customStyle });
 
     instance.on({ type: "messageItemCustom", handler: carouselButtonHandler, instance });
 
-    instance.updateCSSVariables(customStyle);
+    instance.updateCSSVariables(initialStyle);
     instance.on({ type: "pre:receive", handler: preReceive });
     instance.on({ type: "receive", handler: autoScroll });
     instance.on({ type: "pre:send", handler: onPreSend });
@@ -420,14 +443,14 @@ const WAChat = () => {
               </PopoverContent>
             </Popover>
           </div>
-          <HeaderGlobalAction aria-label="Mode switch">
+          {/* <HeaderGlobalAction aria-label="Mode switch">
             <BrightnessContrast
               size={20}
               onClick={() => {
                 setIsDarkMode((isDarkMode) => {
                   if (instance) {
                     if (isDarkMode) {
-                      instance.updateCSSVariables(initialStyle);
+                      instance.updateCSSVariables(defaultStyle);
                     } else {
                       instance.updateCSSVariables(darkStyle);
                     }
@@ -436,7 +459,7 @@ const WAChat = () => {
                 });
               }}
             />
-          </HeaderGlobalAction>
+          </HeaderGlobalAction> */}
         </HeaderGlobalBar>
       </Header>
       <img src="/RAGstar_background.png" style={{ marginTop: "-60px", width: "100%" }}></img>
