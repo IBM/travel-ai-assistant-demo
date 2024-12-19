@@ -354,7 +354,7 @@ const WAChat = () => {
     Object.keys(darkStyle).forEach((key) => {
       newObj[key] = computedStyle.getPropertyValue(`--cds-chat-${key}`);
     });
-    console.log(computedStyle.getPropertyValue(`--cds-chat-PRIMARY-color`));
+ 
 
     setInitialStyle({ ...defaultStyle, ...customStyle });
 
