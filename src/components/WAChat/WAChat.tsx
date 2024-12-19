@@ -260,7 +260,7 @@ const WAChat = () => {
     }
   };
 
-  const autoScroll = (event: any, instance: WebChatInstance) => {
+  const proactive = (event: any, instance: WebChatInstance) => {
     const generic = event.data.output.generic;
 
     const sendObjectBase = {
@@ -362,7 +362,7 @@ const WAChat = () => {
 
     instance.updateCSSVariables(initialStyle);
     instance.on({ type: "pre:receive", handler: preReceive });
-    instance.on({ type: "receive", handler: autoScroll });
+    instance.on({ type: "receive", handler: proactive, instance });
     instance.on({ type: "pre:send", handler: onPreSend });
     instance.restartConversation();
     instance.on({
