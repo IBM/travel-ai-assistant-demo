@@ -260,14 +260,28 @@ const WAChat = () => {
     }
   };
 
-  const autoScroll = () => {
-    const chatWindow = document.getElementById("WAC__messages");
+  const autoScroll = (event: any, instance: WebChatInstance) => {
+    const generic = event.data.output.generic;
 
-    if (chatWindow) {
-      chatWindow.scrollTo({
-        top: chatWindow.scrollHeight + 1000,
-        behavior: "smooth", // Enable smooth scrolling
-      });
+    const sendObjectBase = {
+      input: {
+        message_type: "text",
+        text: "proactive visa",
+      },
+      context: {},
+    };
+
+    const sendOptions = {
+      silent: true,
+    };
+
+    for (let i = 0; i < generic.length; i++) {
+      const item = generic[i];
+      if (item.response_type === "conversational_search") {
+        if (item.text.includes("visa")) {
+          instance.send(sendObjectBase, sendOptions);
+        }
+      }
     }
   };
 
