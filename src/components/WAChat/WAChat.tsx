@@ -95,7 +95,7 @@ const webChatConfigs: { [key: string]: WebChatConfig } = {
     integrationID: integrationID,
     serviceInstanceID: serviceInstanceID,
     //@ts-ignore
-    region: "aws-us-east-1",
+    region: "wxo-us-south",
     headerConfig: { showRestartButton: true },
   },
 };

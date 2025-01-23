@@ -1,0 +1,274 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Google Maps Places API",
+    "description": "OpenAPI definition for Google Maps Places API for Places Nearby Search and Text Search for Places.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://maps.googleapis.com/maps/api/place",
+      "description": "Google Maps Places API Base URL"
+    }
+  ],
+  "paths": {
+    "/nearbysearch/json": {
+      "get": {
+        "summary": "Search for places nearby a given location",
+        "description": "Returns a list of places based on a specified location and radius.",
+        "parameters": [
+          {
+            "name": "location",
+            "in": "query",
+            "required": true,
+            "description": "The latitude/longitude around which to retrieve place information. Format: `lat,lng`.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "required": true,
+            "description": "The distance (in meters) within which to return place results.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "description": "A term to be matched against all content that Google has indexed for this place.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "description": "Restricts the results to places matching the specified type.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includedTypes",
+            "in": "query",
+            "required": false,
+            "description": "A comma-separated list of place types to include in the results.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rankReference",
+            "in": "query",
+            "required": false,
+            "description": "Specifies the ranking reference for sorting results.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxResultCount",
+            "in": "query",
+            "required": false,
+            "description": "Limits the maximum number of results returned.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "regionCode",
+            "in": "query",
+            "required": false,
+            "description": "The region code to restrict the results. Example: 'de' for Germany.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "languageCode",
+            "in": "query",
+            "required": false,
+            "description": "The language code for the results. Example: 'en' for English.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "excludedTypes",
+            "in": "query",
+            "required": false,
+            "description": "A comma-separated list of place types to exclude from the results.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "required": true,
+            "description": "Your API key for authenticating requests to Google Maps API.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response containing a list of nearby places.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "geometry": {
+                            "type": "object",
+                            "properties": {
+                              "location": {
+                                "type": "object",
+                                "properties": {
+                                  "lat": {
+                                    "type": "number"
+                                  },
+                                  "lng": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "types": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid parameters."
+          },
+          "401": {
+            "description": "Unauthorized - Invalid API key."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        }
+      }
+    },
+    "/textsearch/json": {
+      "get": {
+        "summary": "Perform a text search for places",
+        "description": "Returns a list of places matching a text-based search query.",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "description": "The text string on which to search, e.g., `restaurants in Berlin`.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "description": "The region code, specified as a ccTLD (e.g., `de` for Germany).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "required": true,
+            "description": "Your API key for authenticating requests to Google Maps API.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response containing a list of places.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "formatted_address": {
+                            "type": "string"
+                          },
+                          "geometry": {
+                            "type": "object",
+                            "properties": {
+                              "location": {
+                                "type": "object",
+                                "properties": {
+                                  "lat": {
+                                    "type": "number"
+                                  },
+                                  "lng": {
+                                    "type": "number"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "types": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Invalid parameters."
+          },
+          "401": {
+            "description": "Unauthorized - Invalid API key."
+          },
+          "500": {
+            "description": "Internal Server Error."
+          }
+        }
+      }
+    }
+  }
+}
