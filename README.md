@@ -1,4 +1,3 @@
-![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/447377/4b98cdf6-4570-48ee-b708-8960d4a484a9)
 
 Still under construction. 
 
