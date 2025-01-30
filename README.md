@@ -1,28 +1,48 @@
-# Create T3 App
+![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/447377/4b98cdf6-4570-48ee-b708-8960d4a484a9)
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Still under construction. 
 
-## What's next? How do I make an app with this?
+# About This Repository 
+Following, we will outline the objectives of this demo asset and how to set up: 
+1.	Demo Objectives 
+A brief overview of the demo, including its purpose, features, and intended audience.
+2.	Demo Deployment
+Step-by-step instructions to configure and run the demo on your system.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+# Demo Objectives 
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Use Case 
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+This demo showcases best practices for building an AI-driven, agentic virtual assistant using Retrieval-Augmented Generation (RAG) with watsonx Orchestrate.
 
-## Learn More
+To illustrate these principles, the demo follows a narrative centered on employees managing the travel and expense process at a fictional company called RAGNova:
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+- User: Plans a business trip, including booking a hotel.
+- Governance Officer: Oversees the virtual assistant, ensuring it mitigates challenges such as hallucinations and potential misuse.
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+## Features 
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+TBD 
 
-## How do I deploy this?
+## Architecture 
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+TBD
+
+# Demo Deployment
+
+Setup Technical Environment (incl. Services) 
+•	Watsonx Orchestrate 
+•	Watsonx Discovery (ElasticSearch Database) 
+•	Watsonx Governance
+•	Watsonx AI 
+
+Watsonx Discovery: Create index 
+
+Watsonx Orchestrate: Import the action.json
+
+Watsonx Orchestrate: Setup extensions
+
+Watsonx Orchestrate: Define variables
+
+Watsonx Governance: 
+
