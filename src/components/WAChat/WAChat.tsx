@@ -340,10 +340,54 @@ const WAChat = () => {
           (item.disclaimer = "Accuracy of generated answers may vary."); // Disclaimer text
         event.updateHistory = true;
       } else if (item.response_type === "carousel") {
+        replaceImageUrlsWithoutDuplicates(item);
         console.log(item);
       }
     }
   };
+
+  function replaceImageUrlsWithoutDuplicates(item: any) {
+    // Array of image filenames located in the public folder
+    let images = [
+      "/hotels/hotel1.png",
+      "/hotels/hotel2.jpg",
+      "/hotels/hotel3.jpg",
+      "/hotels/hotel4.jpg",
+      "/hotels/hotel5.jpg",
+      "/hotels/hotel6.png",
+      "/hotels/hotel7.png",
+      "/hotels/hotel8.png",
+      "/hotels/hotel9.jpg",
+      "/hotels/hotel10.png",
+      "/hotels/hotel11.png",
+      "/hotels/hotel12.png",
+      "/hotels/hotel13.png",
+      "/hotels/hotel14.jpg",
+    ];
+
+    // Shuffle the images to ensure randomness
+    images = images.sort(() => Math.random() - 0.5);
+
+    let imageIndex = 0;
+
+    // Loop through the object and modify `item` in place
+    item.items.forEach((hotel: any) => {
+      hotel.body.forEach((element: any) => {
+        if (element.response_type === "image" && element.source) {
+          element.source = images[imageIndex];
+
+          // Move to the next image in the array
+          imageIndex++;
+
+          // If all images are used, reshuffle and restart
+          if (imageIndex >= images.length) {
+            imageIndex = 0;
+            images = images.sort(() => Math.random() - 0.5); // Reshuffle if needed
+          }
+        }
+      });
+    });
+  }
 
   const onBeforeRender: any = (instance: WebChatInstance) => {
     setInstance(instance);
