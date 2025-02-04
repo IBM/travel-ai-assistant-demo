@@ -339,6 +339,8 @@ const WAChat = () => {
           ]),
           (item.disclaimer = "Accuracy of generated answers may vary."); // Disclaimer text
         event.updateHistory = true;
+      } else if (item.response_type === "carousel") {
+        console.log(item);
       }
     }
   };
@@ -354,7 +356,6 @@ const WAChat = () => {
     Object.keys(darkStyle).forEach((key) => {
       newObj[key] = computedStyle.getPropertyValue(`--cds-chat-${key}`);
     });
- 
 
     setInitialStyle({ ...defaultStyle, ...customStyle });
 
