@@ -298,7 +298,7 @@ const WAChat = () => {
           (item.citations = [
             // The citations for the generated response
             {
-              title: null,
+              title: "Snippet 1",
               text: event.data.context.skills["actions skill"].skill_variables.passage_1,
               body: event.data.context.skills["actions skill"].skill_variables.passage_1,
               search_result_idx: 0,
@@ -306,7 +306,7 @@ const WAChat = () => {
               range_end: 0,
             },
             {
-              title: null,
+              title: "Snippet 2",
               text: event.data.context.skills["actions skill"].skill_variables.passage_2,
               body: event.data.context.skills["actions skill"].skill_variables.passage_2,
               search_result_idx: 1,
@@ -323,7 +323,7 @@ const WAChat = () => {
 
               id: "result_1",
 
-              title: null,
+              title: "Test",
 
               body: event.data.context.skills["actions skill"].skill_variables.passage_1,
             },
@@ -338,6 +338,7 @@ const WAChat = () => {
             },
           ]),
           (item.disclaimer = "Accuracy of generated answers may vary."); // Disclaimer text
+        console.log(item);
         event.updateHistory = false;
       } else if (item.response_type === "carousel") {
         replaceImageUrlsWithoutDuplicates(item);
@@ -351,7 +352,6 @@ const WAChat = () => {
     let images = [
       "/hotels/hotel1.png",
       "/hotels/hotel2.jpg",
-      "/hotels/hotel3.jpg",
       "/hotels/hotel4.jpg",
       "/hotels/hotel5.jpg",
       "/hotels/hotel6.png",
