@@ -338,10 +338,10 @@ const WAChat = () => {
             },
           ]),
           (item.disclaimer = "Accuracy of generated answers may vary."); // Disclaimer text
-        event.updateHistory = true;
+        event.updateHistory = false;
       } else if (item.response_type === "carousel") {
         replaceImageUrlsWithoutDuplicates(item);
-        console.log(item);
+        event.updateHistory = false;
       }
     }
   };
