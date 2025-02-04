@@ -111,7 +111,7 @@ const WAChat = () => {
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const [userPosition, setUserPosition] = useState<string>("Vice President");
-  const [userName, setUserName] = useState<string>("Joe");
+  const [userName, setUserName] = useState<string>("Jon");
 
   const onPreSend = (event: any) => {
     if (event.data.history.is_welcome_request) {
