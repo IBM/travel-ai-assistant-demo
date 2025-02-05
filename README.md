@@ -26,7 +26,7 @@ TBD
 
 ## Architecture
 
-![Architecture]("./images/architecture.png")
+![Architecture]("images/architecture.png")
 
 # Demo Deployment
 
