@@ -13,12 +13,12 @@ Following, we will outline the objectives of this demo asset and how to set it u
 
 ## Use Case
 
-This demo showcases best practices for building an AI-driven, agentic virtual assistant using Retrieval-Augmented Generation (RAG) with watsonx Orchestrate.
+This demo showcases best practices for building an agentic AI assistant using custom Retrieval-Augmented Generation (RAG) with watsonx Orchestrate.
 
 To illustrate these principles, the demo follows a narrative centered on employees managing the travel and expense process at a fictional company called MINT:
 
 - User: Plans a business trip, including booking a hotel.
-- Governance Officer: Oversees the virtual assistant, ensuring it mitigates challenges such as hallucinations and potential misuse.
+- Governance Officer: Oversees the virtual assistant for MINT, ensuring it mitigates challenges such as hallucinations and potential misuse.
 
 ## Features
 
@@ -30,7 +30,9 @@ TBD
 
 # Demo Deployment
 
-Setup Technical Environment (incl. Services)
+### Setup Technical Environment (incl. Services)
+
+You need to setup an IBM Cloud environment with the following services: 
 
 - Watsonx Orchestrate
 - Watsonx Discovery (ElasticSearch Database)
