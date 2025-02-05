@@ -29,19 +29,21 @@ TBD
 
 # Demo Deployment
 
+
+
 Setup Technical Environment (incl. Services) 
 •	Watsonx Orchestrate 
 •	Watsonx Discovery (ElasticSearch Database) 
 •	Watsonx Governance
 •	Watsonx AI 
 
-Watsonx Discovery: Create index 
+Deploying the Frontend to Code Engine
 
-Watsonx Orchestrate: Import the action.json
+Uploading Actions to Orchestrate  
 
-Watsonx Orchestrate: Setup extensions
+Setting up extensions with API Files 
 
-Watsonx Orchestrate: Define variables
+Creating / Importing Watsonx.AI project 
 
-Watsonx Governance: 
+Setting up Governance 
 
