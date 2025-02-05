@@ -2,7 +2,7 @@
 Still under construction. 
 
 # About This Repository 
-Following, we will outline the objectives of this demo asset and how to set up: 
+Following, we will outline the objectives of this demo asset and how to set it up: 
 1.	Demo Objectives: 
 A brief overview of the demo, including its purpose, features, and intended audience.
 2.	Demo Deployment:
