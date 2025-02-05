@@ -15,14 +15,23 @@ Following, we will outline the objectives of this demo asset and how to set it u
 
 This demo showcases best practices for building an agentic AI assistant using custom Retrieval-Augmented Generation (RAG) with watsonx Orchestrate.
 
-To illustrate these principles, the demo follows a narrative centered on employees managing the travel and expense process at a fictional company called MINT:
+To illustrate these principles, the demo follows a narrative centered on employees managing the travel and expense process at a fictional company called MINT. The assistant is called TravelGenie and combines both rules-based conversation logic and generative AI to answer questions and perform services around corporate travel: 
 
-- User: Plans a business trip, including booking a hotel.
-- Governance Officer: Oversees the virtual assistant for MINT, ensuring it mitigates challenges such as hallucinations and potential misuse.
+- Jon (VP Sales): Plans a business trip to Tokyo and wants to know where to stay and where his colleagues are.
+- Daniel (Data Analyst): Plans to book luxurious accomationds and upgraded flights for his business trip.
+- Marie (Governance Officer): Oversees the AI assistant for MINT, ensuring it mitigates challenges such as hallucinations and potential misuse.
 
 ## Features
 
-TBD
+This demo showcases the following features: 
+
+- Chat with Documents - RAG
+- Integrate external APIs (i.e., GoogleMaps) - RAG
+- Personalization of generative answers (e.g., based on personality characteristics)
+- LLM capabilities (e.g., summarization of conversations, generation of emails)
+- Proactuve guidance of users through conversation journey
+- Measures for governance, control, and security - including guardrails protecting from hallucinations and prompt injections as wells as ground truth check 
+
 
 ## Architecture
 
