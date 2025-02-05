@@ -94,3 +94,17 @@ For further questions, reach out on slack or mail to `janik.buecher@ibm.com`
 ### Creating / Importing Watsonx.AI project
 
 ### Setting up Governance
+
+Prerequisite: Prompts have already been set up 
+
+Here is a step by step guide to track these prompts in watsonx governance: 
+
+1. Create an AI Use Case: Navigate to **watsonx.governance**, **AI Use Cases** > **Create New Use Case**, and provide a name (and description) for the use case.
+2. Assourciate Prompt Template: Go to your **development project** where the prompt template is stored, select the prompt template and click **Add to AI Use Case**, and choose the relevant AI use case to track its progress.
+3.Import the Prompt Template for Validation: Navigate to the **validation project**, click **Import Assets** and select the prompt template from the development
+4.... 
+
+
+
+
+**Note:** For a full tutorial, refer to IBM’s official [documentation]([https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/get-started-evaluate-prompt.html?](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/get-started-evaluate-prompt.html?context=wx#:~:text=You%20can%20track%20your%20prompt,Track%20in%20AI%20use%20case.)).
