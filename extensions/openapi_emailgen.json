@@ -1,0 +1,210 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "description": "Minimal spec for commonly used features in watsonx.ai /generation API endpoint. Missing a few of parameters.",
+    "title": "Simplified watsonx.ai generation API",
+    "version": "1.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://{region}.ml.cloud.ibm.com/ml/v1/deployments/{deployment_id}",
+      "description": "watsonx.ai v1",
+      "variables": {
+        "region": {
+          "enum": [
+            "us-south",
+            "eu-de",
+            "eu-gb",
+            "jp-tok"
+          ],
+          "default": "us-south",
+          "description": "The region where you want to access watsonx.ai"
+        },
+        "deployment_id": {
+          "default": "",
+          "description": "the deployment id"
+        }
+      }
+    }
+  ],
+  "security": [
+    {
+      "oauth2": []
+    }
+  ],
+  "paths": {
+    "/text/generation": {
+      "post": {
+        "description": "Generation",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Release date of the version of the API you want to use. Specify dates in YYYY-MM-DD format. The current version is `2023-05-29`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextGenRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextGenResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    },
+    "/text/generation_stream": {
+      "post": {
+        "description": "Generation Stream",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Release date of the version of the API you want to use. Specify dates in YYYY-MM-DD format. The current version is `2023-05-29`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TextGenRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Default Response",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "$ref": "#/components/schemas/TextGenResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TextGenRequest": {
+        "type": "object",
+        "required": [
+          "parameters"
+        ],
+        "properties": {
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "prompt_variables": {
+                "type": "object",
+                "properties": {
+                  "employee": {
+                    "type": "string"
+                  },
+                  "manager": {
+                    "type": "string"
+                  },
+                  "hotel": {
+                    "type": "string"
+                  },
+                  "start_date": {
+                    "type": "string"
+                  },
+                  "end_date": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "TextGenResponse": {
+        "type": "object",
+        "properties": {
+          "model_id": {
+            "description": "The ID of the model to be used for this request",
+            "type": "string"
+          },
+          "created_at": {
+            "description": "The date and time of the response",
+            "type": "string"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "generated_text": {
+                  "description": "The generated text",
+                  "type": "string"
+                },
+                "generated_token_count": {
+                  "description": "The number of tokens in the output",
+                  "type": "integer"
+                },
+                "input_token_count": {
+                  "description": "The number of tokens in the input",
+                  "type": "integer"
+                },
+                "stop_reason": {
+                  "description": "The reason for stopping the generation.  Can be NOT_FINISHED - Possibly more tokens to be streamed, MAX_TOKENS - Maximum requested tokens reached, EOS_TOKEN - End of sequence token encountered, CANCELLED - Request canceled by the client, TIME_LIMIT - Time limit reached, STOP_SEQUENCE - Stop sequence encountered, TOKEN_LIMIT - Token limit reached, ERROR - Error encountered",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "oauth2": {
+        "type": "oauth2",
+        "flows": {
+          "x-apikey": {
+            "tokenUrl": "https://iam.cloud.ibm.com/identity/token",
+            "grantType": "urn:ibm:params:oauth:grant-type:apikey",
+            "secretKeys": [
+              "apikey"
+            ],
+            "paramKeys": [],
+            "scopes": {}
+          }
+        }
+      }
+    }
+  }
+}
