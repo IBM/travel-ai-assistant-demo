@@ -102,27 +102,35 @@ You need the json files stored in the `extensions` folder:
 The creation of the Custom Extensions will be similar in all the cases:
 
 1. Click on the "Integrations" section in the left menu:
+   
 ![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/0033695f-37cd-4c1e-9ab2-4376511fb533)
 
 2. Click "Build Custom Extension" button:
+   
 ![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/413f7cbc-59a7-44d9-b017-5137de5a6f9a)
 
 3. Click "Next" button on the "Get Started" section:
+   
 ![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/b398c38e-aaa7-46ff-8c3c-5005bfffd488)
 
 4. Specify a name for the Custom Extension, such as "Watsonx Deployed Prompt":
+ 
 ![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/94b94830-b454-4094-a097-d204dabb80e4)
 
-5. Upload the corresponding OpenAPI file: 
+5. Upload the corresponding OpenAPI file:
+   
 ![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/6ab95561-e105-4479-bc81-0e4f2c1d16cd)
 
 6. Click "Finish" button:
+
 ![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/e9ba2dad-5cef-43f8-a137-5d9cdd1f5fdd)
 
 Once you have created the extension, you need to add it to your assistant to use it. To do this, click the "Add" button:
+
 ![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/24487200-5a7d-4802-896e-13cda30735f2)
 
 In the "Authentication" section, specify the required method and parameters:
+
 ![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/9b350269-4488-4c17-bd59-11a54c77b3a8)
 
 - To add the ElasticSearch extension, you will need to use "Basic auth", specifying the username and password.
