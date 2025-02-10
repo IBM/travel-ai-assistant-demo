@@ -35,7 +35,7 @@ This demo showcases the following features:
 
 ## Architecture
 
-![Architecture](images/architecture.png?raw=true)
+<img width="1093" alt="Screenshot 2025-02-10 at 17 33 16" src="https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/447377/1acca213-065e-45bb-b73a-312df4662713">
 
 # Demo Deployment
 
