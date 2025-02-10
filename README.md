@@ -138,6 +138,9 @@ In the "Authentication" section, specify the required method and parameters:
 
 ### Creating / Importing Watsonx.AI project
 
+### Importing the Actions
+
+
 ### Setting up Governance
 
 Prerequisite: Prompts have already been set up 
