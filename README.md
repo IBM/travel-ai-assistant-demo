@@ -53,6 +53,10 @@ You need to setup an IBM Cloud environment with the following services:
 
 ### Uploading Actions to Orchestrate
 
+In the `./Actions` folder you can find the action JSON file that you can upload to your Assistant instance. 
+
+For this navigate to the Action Tab within the Assistant UI. Then click on the settings icon in the top right corner. Then navigate to the most right Tab called "Upload/Download". Here you can upload the actions JSON file. 
+
 For further questions, reach out on slack or mail to `janik.buecher@ibm.com`
 
 ### Deploying the Frontend to Code Engine
