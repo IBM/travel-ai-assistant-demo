@@ -47,7 +47,8 @@ You need to setup an IBM Cloud environment with the following services:
 - Watsonx AI
 - Code Engine
 - Cloud Registry
-- Google Cloud API Key (Google Maps Integration)
+
+Moreover, you need to create a Google Cloud API Key (Google Maps Integration).
 
 ### Uploading Actions to Orchestrate
 
