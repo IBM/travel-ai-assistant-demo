@@ -1,5 +1,3 @@
-Still under construction.
-
 # About This Repository
 
 Following, we will outline the objectives of this demo asset and how to set it up:
