@@ -99,42 +99,41 @@ You need the json files stored in the `extensions` folder:
 -  `elasticsearch-generic-openapi.json`: enables connection and querying of the ElasticSearch database.
 -  `openapi_emailgen.json`: calls a prompt deployed on Watson Machine Learning to generate an email based on parameters such as hotel name, travel start and end dates, and reason for travel.
 -  `openapi_watsonx_reviews_2.json`: calls a prompt deployed on Watson Machine Learning to generate a summary of hotel reviews.
--  `watsonx-deployed-prompt-qa-rag-openapi.json`: `ASK TEAM`
-
+-  `watsonx-deployed-prompt-qa-rag-openapi.json`: calls a prompt deployed to build an answer based on the collected information.
 
 The creation of the Custom Extensions will be similar in all the cases:
 
 1. Click on the "Integrations" section in the left menu:
-   
-![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/0033695f-37cd-4c1e-9ab2-4376511fb533)
+
+![Integrations](https://github.com/user-attachments/assets/f1945c53-7e9a-4e3c-bb33-bc127732adaf)
 
 2. Click "Build Custom Extension" button:
-   
-![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/413f7cbc-59a7-44d9-b017-5137de5a6f9a)
+
+![BuildCustomExtension](https://github.com/user-attachments/assets/12384bc4-4aba-4141-9235-cb84c4ce5db7)
 
 3. Click "Next" button on the "Get Started" section:
    
-![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/b398c38e-aaa7-46ff-8c3c-5005bfffd488)
-
+![CustomExtension](https://github.com/user-attachments/assets/b9a878f0-eddb-48d5-88e4-9ec34a2a58f0)
+ 
 4. Specify a name for the Custom Extension, such as "Watsonx Deployed Prompt":
  
-![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/94b94830-b454-4094-a097-d204dabb80e4)
+![BasicInformation](https://github.com/user-attachments/assets/7bcd69e5-541e-4ff0-9895-76b82014157a)
 
 5. Upload the corresponding OpenAPI file:
    
-![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/6ab95561-e105-4479-bc81-0e4f2c1d16cd)
+![ImportOpenAPI](https://github.com/user-attachments/assets/1a16682c-4d94-4888-bdd3-6c6f7fab8553)
 
 6. Click "Finish" button:
 
-![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/e9ba2dad-5cef-43f8-a137-5d9cdd1f5fdd)
+![ReviewExtension](https://github.com/user-attachments/assets/cdf9e044-b6ec-4ebd-8416-0b32ebad0162)
 
 Once you have created the extension, you need to add it to your assistant to use it. To do this, click the "Add" button:
 
-![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/24487200-5a7d-4802-896e-13cda30735f2)
+![AddExtension](https://github.com/user-attachments/assets/c849dba3-8d60-4416-97ec-51ce9fb21cfa)
 
 In the "Authentication" section, specify the required method and parameters:
 
-![image](https://github.ibm.com/celestial-ai-assistants-and-genai/travel-ai-assistant/assets/350780/9b350269-4488-4c17-bd59-11a54c77b3a8)
+![Authentication](https://github.com/user-attachments/assets/9f5ccf82-c40f-4c29-a47b-e3f742950068)
 
 - To add the ElasticSearch extension, you will need to use "Basic auth", specifying the username and password.
 - For the other extensions, you will need to use "OAuth 2.0" and specify the API key
