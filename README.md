@@ -13,23 +13,22 @@ Following, we will outline the objectives of this demo asset and how to set it u
 
 This demo showcases best practices for building an agentic AI assistant using custom Retrieval-Augmented Generation (RAG) with watsonx Orchestrate.
 
-To illustrate these principles, the demo follows a narrative centered on employees managing the travel and expense process at a fictional company called MINT. The assistant is called TravelGenie and combines both rules-based conversation logic and generative AI to answer questions and perform services around corporate travel: 
+To illustrate these principles, the demo follows a narrative centered on employees managing the travel and expense process at a fictional company called MINT. The assistant is called TravelGenie and combines both rules-based conversation logic and generative AI to answer questions and perform services around corporate travel:
 
 - Jon (VP Sales): Plans a business trip to Tokyo and wants to know where to stay and where his colleagues are.
-- Daniel (Data Analyst): Plans to book luxurious accomationds and upgraded flights for his business trip.
+- Daniel (Data Analyst): Plans to book luxurious accommodations and upgraded flights for his business trip.
 - Marie (Governance Officer): Oversees the AI assistant for MINT, ensuring it mitigates challenges such as hallucinations and potential misuse.
 
 ## Features
 
-This demo showcases the following features: 
+This demo showcases the following features:
 
 - Chat with Documents - RAG
 - Integrate external APIs (i.e., GoogleMaps) - RAG
 - Personalization of generative answers (e.g., based on personality characteristics)
 - LLM capabilities (e.g., summarization of conversations, generation of emails)
 - Proactuve guidance of users through conversation journey
-- Measures for governance, control, and security - including guardrails protecting from hallucinations and prompt injections as wells as ground truth check 
-
+- Measures for governance, control, and security - including guardrails protecting from hallucinations and prompt injections as wells as ground truth check
 
 ## Architecture
 
@@ -39,7 +38,7 @@ This demo showcases the following features:
 
 ### Setup Technical Environment (incl. Services)
 
-You need to setup an IBM Cloud environment with the following services: 
+You need to setup an IBM Cloud environment with the following services:
 
 - Watsonx Orchestrate
 - Watsonx Discovery (ElasticSearch Database)
@@ -48,13 +47,13 @@ You need to setup an IBM Cloud environment with the following services:
 - Code Engine
 - Cloud Registry
 
-Moreover, you need to create a Google Cloud API Key (Google Maps Integration).
+Moreover, you need to create a Google Cloud API Key (Google Maps Integration). You can learn how to get your personal key [here](https://developers.google.com/maps/documentation/javascript/get-api-key).
 
 ### Uploading Actions to Orchestrate
 
-In the `./Actions` folder you can find the action JSON file that you can upload to your Assistant instance. 
+In the `./Actions` folder you can find the action JSON file that you can upload to your Assistant instance.
 
-For this navigate to the Action Tab within the Assistant UI. Then click on the settings icon in the top right corner. Then navigate to the most right Tab called "Upload/Download". Here you can upload the actions JSON file. 
+For this navigate to the Action Tab within the Assistant UI. Then click on the settings icon in the top right corner. Then navigate to the most right Tab called "Upload/Download". Here you can upload the actions JSON file.
 
 For further questions, reach out on slack or mail to `janik.buecher@ibm.com`
 
@@ -95,11 +94,12 @@ For further questions, reach out on slack or mail to `janik.buecher@ibm.com`
 For further questions, reach out on slack or mail to `janik.buecher@ibm.com`
 
 You need the json files stored in the `extensions` folder:
--  `GoogleMapsAPI.json`: connects to the Google Maps API to search for places near a given location and to perform a search for places.
--  `elasticsearch-generic-openapi.json`: enables connection and querying of the ElasticSearch database.
--  `openapi_emailgen.json`: calls a prompt deployed on Watson Machine Learning to generate an email based on parameters such as hotel name, travel start and end dates, and reason for travel.
--  `openapi_watsonx_reviews_2.json`: calls a prompt deployed on Watson Machine Learning to generate a summary of hotel reviews.
--  `watsonx-deployed-prompt-qa-rag-openapi.json`: calls a prompt deployed to build an answer based on the collected information.
+
+- `GoogleMapsAPI.json`: connects to the Google Maps API to search for places near a given location and to perform a search for places.
+- `elasticsearch-generic-openapi.json`: enables connection and querying of the ElasticSearch database.
+- `openapi_emailgen.json`: calls a prompt deployed on Watson Machine Learning to generate an email based on parameters such as hotel name, travel start and end dates, and reason for travel.
+- `openapi_watsonx_reviews_2.json`: calls a prompt deployed on Watson Machine Learning to generate a summary of hotel reviews.
+- `watsonx-deployed-prompt-qa-rag-openapi.json`: calls a prompt deployed to build an answer based on the collected information.
 
 The creation of the Custom Extensions will be similar in all the cases:
 
@@ -112,15 +112,15 @@ The creation of the Custom Extensions will be similar in all the cases:
 ![BuildCustomExtension](images/customextension_buildcustomextension.png)
 
 3. Click "Next" button on the "Get Started" section:
-   
+
 ![CustomExtension](images/customextension_getstarted.png)
- 
+
 4. Specify a name for the Custom Extension, such as "Watsonx Deployed Prompt":
- 
+
 ![BasicInformation](images/customextension_basicinformation.png)
 
 5. Upload the corresponding OpenAPI file:
-   
+
 ![ImportOpenAPI](images/customextension_importopenapi.png)
 
 6. Click "Finish" button:
@@ -138,25 +138,51 @@ In the "Authentication" section, specify the required method and parameters:
 - To add the ElasticSearch extension, you will need to use "Basic auth", specifying the username and password.
 - For the other extensions, you will need to use "OAuth 2.0" and specify the API key
 
+## Connecting Extension to the correct Actions
+
+1. Google Maps:
+
+   To use this extension you need to set the `google_maps_api_key` variable in the Assistant Variables with your own personal Google Maps API key.
+   You can learn how to get your personal key [here](https://developers.google.com/maps/documentation/javascript/get-api-key).
+
+   Action Name: `Hotel Selection`
+   ![Hotel Selection](images/customextension_googlemaps_1.png)
+   ![Hotel Selection](images/customextension_googlemaps_2.png)
+
+2. RAG
+
+   Action Name: `Conversational Search triggered`
+
+   ![Elastic Search](images/customextension_rag_elastic.png)
+   ![Watsonx RAG](images/customextension_rag_watsonx.png)
+
+3. Email Generation:
+
+   Action Name: `Generate Email for Hotel Approval Request`
+   ![Watsonx Email](images/customexension_emailgeneration_watsonx.png)
+
+4. Review Summarization:
+
+   Action Name: `Hotel reviews summarization`
+
+   ![Watsonx Summarize](images/customextension_summary_watsonx.png)
+
 ### Creating / Importing Watsonx.AI project
 
 Create a new watsonx.ai project and select `local file` on the left side. Upload the project ZIP file from `./watsonx Project/RagNova-Demo.zip`
 ![Import](images/watsonx_project_import.png)
-### Importing the Actions
 
+### Importing the Actions
 
 ### Setting up Governance
 
-Prerequisite: Prompts have already been set up 
+Prerequisite: Prompts have already been set up
 
-Here is a step by step guide to track these prompts in watsonx governance: 
+Here is a step by step guide to track these prompts in watsonx governance:
 
 1. Create an AI Use Case: Navigate to **watsonx.governance**, **AI Use Cases** > **Create New Use Case**, and provide a name (and description) for the use case.
 2. Assourciate Prompt Template: Go to your **development project** where the prompt template is stored, select the prompt template and click **Add to AI Use Case**, and choose the relevant AI use case to track its progress.
-3.Import the Prompt Template for Validation: Navigate to the **validation project**, click **Import Assets** and select the prompt template from the development
-4.... 
+   3.Import the Prompt Template for Validation: Navigate to the **validation project**, click **Import Assets** and select the prompt template from the development
+   4....
 
-
-
-
-**Note:** For a full tutorial, refer to IBM’s official [documentation]([https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/get-started-evaluate-prompt.html?](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/get-started-evaluate-prompt.html?context=wx#:~:text=You%20can%20track%20your%20prompt,Track%20in%20AI%20use%20case.)).
+**Note:** For a full tutorial, refer to IBM’s official [documentation](<[https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/get-started-evaluate-prompt.html?](https://dataplatform.cloud.ibm.com/docs/content/wsj/getting-started/get-started-evaluate-prompt.html?context=wx#:~:text=You%20can%20track%20your%20prompt,Track%20in%20AI%20use%20case.)>).
