@@ -96,16 +96,20 @@ For further questions, reach out on slack or mail to `janik.buecher@ibm.com`
 
 You need the json files stored in the `extensions` folder:
 
+<<<<<<< HEAD
 - `GoogleMapsAPI.json`: connects to the Google Maps API to search for places near a given location and to perform a search for places.
 - `elasticsearch-generic-openapi.json`: enables connection and querying of the ElasticSearch database.
 - `openapi_emailgen.json`: calls a prompt deployed on Watson Machine Learning to generate an email based on parameters such as hotel name, travel start and end dates, and reason for travel.
 - `openapi_watsonx_reviews_2.json`: calls a prompt deployed on Watson Machine Learning to generate a summary of hotel reviews.
 - `watsonx-deployed-prompt-qa-rag-openapi.json`: calls a prompt deployed to build an answer based on the collected information.
 
+=======
+>>>>>>> 33a538a (Update README.md)
 The creation of the Custom Extensions will be similar in all the cases:
 
 1. Click on the "Integrations" section in the left menu:
 
+<<<<<<< HEAD
 ![Integrations](images/customextension_integrations.png)
 
 2. Click "Build Custom Extension" button:
@@ -135,6 +139,37 @@ Once you have created the extension, you need to add it to your assistant to use
 In the "Authentication" section, specify the required method and parameters:
 
 ![Authentication](images/customextension_authentication.png)
+=======
+![Integrations](https://github.com/user-attachments/assets/f1945c53-7e9a-4e3c-bb33-bc127732adaf)
+
+2. Click "Build Custom Extension" button:
+
+![BuildCustomExtension](https://github.com/user-attachments/assets/12384bc4-4aba-4141-9235-cb84c4ce5db7)
+
+3. Click "Next" button on the "Get Started" section:
+   
+![CustomExtension](https://github.com/user-attachments/assets/b9a878f0-eddb-48d5-88e4-9ec34a2a58f0)
+ 
+4. Specify a name for the Custom Extension, such as "Watsonx Deployed Prompt":
+ 
+![BasicInformation](https://github.com/user-attachments/assets/7bcd69e5-541e-4ff0-9895-76b82014157a)
+
+5. Upload the corresponding OpenAPI file:
+   
+![ImportOpenAPI](https://github.com/user-attachments/assets/1a16682c-4d94-4888-bdd3-6c6f7fab8553)
+
+6. Click "Finish" button:
+
+![ReviewExtension](https://github.com/user-attachments/assets/cdf9e044-b6ec-4ebd-8416-0b32ebad0162)
+
+Once you have created the extension, you need to add it to your assistant to use it. To do this, click the "Add" button:
+
+![AddExtension](https://github.com/user-attachments/assets/c849dba3-8d60-4416-97ec-51ce9fb21cfa)
+
+In the "Authentication" section, specify the required method and parameters:
+
+![Authentication](https://github.com/user-attachments/assets/9f5ccf82-c40f-4c29-a47b-e3f742950068)
+>>>>>>> 33a538a (Update README.md)
 
 - To add the ElasticSearch extension, you will need to use "Basic auth", specifying the username and password.
 - For the other extensions, you will need to use "OAuth 2.0" and specify the API key
