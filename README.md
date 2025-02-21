@@ -32,11 +32,8 @@ This demo showcases the following features:
 
 ## Architecture
 
-<<<<<<< HEAD
 ![Architecture](images/architecture.png)
-=======
-<img width="1093" alt="Screenshot 2025-02-10 at 17 33 16" src="https://github.com/IBM/travel-ai-assistant-demo/assets/447377/1acca213-065e-45bb-b73a-312df4662713">
->>>>>>> 55e9d29 (replaced image url for public repo)
+
 
 # Demo Deployment
 
