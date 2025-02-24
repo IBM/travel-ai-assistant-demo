@@ -4,7 +4,7 @@
   "valid": true,
   "status": "Available",
   "created": "2025-01-14T14:03:53.025Z",
-  "updated": "2025-01-31T20:27:59.085Z",
+  "updated": "2025-02-24T14:18:55.529Z",
   "language": "en",
   "skill_id": "bb2deeff-25d9-4872-9b7d-db234dce0819",
   "workspace": {
@@ -2467,7 +2467,7 @@
           },
           {
             "step": "step_441",
-            "title": "Low confidence (< 10.0) on passage 1 and passage 2, go to error",
+            "title": "Low confidence (< 12.0) on passage 1 and passage 2, go to error",
             "handlers": [],
             "resolver": {
               "type": "invoke_another_action_and_end",
@@ -2487,7 +2487,7 @@
                       "skill_variable": "passage_1_es_hit_score"
                     },
                     {
-                      "scalar": "13.0"
+                      "scalar": "12.0"
                     }
                   ]
                 },
@@ -2497,7 +2497,7 @@
                       "skill_variable": "passage_2_es_hit_score"
                     },
                     {
-                      "scalar": "13.0"
+                      "scalar": "12.0"
                     }
                   ]
                 }
@@ -2507,7 +2507,7 @@
           },
           {
             "step": "step_588",
-            "title": "Low confidence (< 10.0) on passage 1 only, clear passage_1 text",
+            "title": "Low confidence (< 12.0) on passage 1 only, clear passage_1 text",
             "context": {
               "variables": [
                 {
@@ -2529,7 +2529,7 @@
                   "skill_variable": "passage_1_es_hit_score"
                 },
                 {
-                  "scalar": "13.0"
+                  "scalar": "12.0"
                 }
               ]
             },
@@ -2537,7 +2537,7 @@
           },
           {
             "step": "step_120",
-            "title": "Low confidence (< 10.0) on passage 2 only, clear passage_2 text",
+            "title": "Low confidence (< 12.0) on passage 2 only, clear passage_2 text",
             "context": {
               "variables": [
                 {
@@ -2559,7 +2559,7 @@
                   "skill_variable": "passage_2_es_hit_score"
                 },
                 {
-                  "scalar": "13.0"
+                  "scalar": "12.0"
                 }
               ]
             },
@@ -3443,297 +3443,6 @@
         "type": "standard",
         "steps": [
           {
-            "step": "step_839",
-            "output": {
-              "generic": [
-                {
-                  "values": [
-                    {
-                      "text_expression": {
-                        "concat": [
-                          {
-                            "scalar": "Sexual harassment is unacceptable at "
-                          },
-                          {
-                            "skill_variable": "ns_company"
-                          },
-                          {
-                            "scalar": ". We won't tolerate unwelcome sexual advances, requests for sexual favors and other verbal or physical conduct of a sexual nature.\n\n<br />\n\n\n\n**Should you experience or observe harassment, immediately report that behavior to management, Human Resources, or the Concerns and Appeals process."
-                          },
-                          {
-                            "scalar": "**\n\n<br />\n\n\n\nWe recognize there are times when you may want to talk to someone who can provide guidance about what options are available to you. In these instances, we encourage you to contact an experienced HR professional via Talk About It@"
-                          },
-                          {
-                            "skill_variable": "ns_company"
-                          },
-                          {
-                            "scalar": ".\n\n<br />\n\n\n\nThe Talk About It@"
-                          },
-                          {
-                            "skill_variable": "ns_company"
-                          },
-                          {
-                            "scalar": " team is a global team of HR professionals established to listen, discuss and offer guidance on the available options to help decide what, if any, actions you wish to take. Issues that you raise will be handled discreetly by the Talk About It@"
-                          },
-                          {
-                            "skill_variable": "ns_company"
-                          },
-                          {
-                            "scalar": " team."
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "response_type": "text",
-                  "selection_policy": "sequential",
-                  "repeat_on_reprompt": false
-                },
-                {
-                  "options": [
-                    {
-                      "label": "Contact Employee Concerns",
-                      "value": {
-                        "input": {
-                          "text": "Contact Employee Concerns"
-                        }
-                      }
-                    },
-                    {
-                      "label": "Contact Talk About It@MINT",
-                      "value": {
-                        "input": {
-                          "text": "Contact Talk About It@MINT"
-                        }
-                      }
-                    },
-                    {
-                      "label": "More information about the MINT Policies",
-                      "value": {
-                        "input": {
-                          "text": "More information about the MINT Policies"
-                        }
-                      }
-                    }
-                  ],
-                  "response_type": "option",
-                  "repeat_on_reprompt": true
-                }
-              ]
-            },
-            "handlers": [
-              {
-                "type": "not_found",
-                "title": "validation_not_found_handler",
-                "output": {
-                  "generic": [
-                    {
-                      "values": [
-                        {
-                          "text_expression": {
-                            "concat": [
-                              {
-                                "scalar": "I didn't catch that. Select a valid option:"
-                              }
-                            ]
-                          }
-                        }
-                      ],
-                      "response_type": "text",
-                      "selection_policy": "incremental"
-                    }
-                  ]
-                },
-                "handler": "validation_not_found_handler",
-                "resolver": {
-                  "type": "prompt_again"
-                },
-                "next_handler": "validation_not_found_max_tries_handler"
-              },
-              {
-                "type": "not_found_max_tries",
-                "title": "validation_not_found_max_tries_handler",
-                "handler": "validation_not_found_max_tries_handler",
-                "resolver": {
-                  "type": "fallback"
-                }
-              }
-            ],
-            "question": {
-              "entity": "entity_36815",
-              "max_tries": 3
-            },
-            "resolver": {
-              "type": "continue"
-            },
-            "variable": "step_839",
-            "next_step": "step_707"
-          },
-          {
-            "step": "step_707",
-            "output": {
-              "generic": [
-                {
-                  "values": [
-                    {
-                      "text_expression": {
-                        "concat": [
-                          {
-                            "scalar": "Under this link you will find all further information and contact details for Employee Concerns: [link](https://)\n\n<br />\n\n\n\nPlease do not hesitate to report an incident."
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "response_type": "text",
-                  "selection_policy": "sequential"
-                }
-              ]
-            },
-            "handlers": [],
-            "resolver": {
-              "type": "end_action"
-            },
-            "variable": "step_707",
-            "condition": {
-              "eq": [
-                {
-                  "variable": "step_839"
-                },
-                {
-                  "value": "Contact Employee Concerns",
-                  "from_entity": "entity_36815"
-                }
-              ]
-            },
-            "next_step": "step_330"
-          },
-          {
-            "step": "step_330",
-            "output": {
-              "generic": [
-                {
-                  "values": [
-                    {
-                      "text_expression": {
-                        "concat": [
-                          {
-                            "scalar": "Under this link you will find all further information and contact details for Talk About It@"
-                          },
-                          {
-                            "skill_variable": "ns_company"
-                          },
-                          {
-                            "scalar": ": [link](https://)\n\n<br />\n\n\n\nPlease do not hesitate to report an incident."
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "response_type": "text",
-                  "selection_policy": "sequential"
-                }
-              ]
-            },
-            "handlers": [],
-            "resolver": {
-              "type": "end_action"
-            },
-            "variable": "step_330",
-            "condition": {
-              "eq": [
-                {
-                  "variable": "step_839"
-                },
-                {
-                  "value": "Contact Talk About It@MINT",
-                  "from_entity": "entity_36815"
-                }
-              ]
-            },
-            "next_step": "step_245"
-          },
-          {
-            "step": "step_245",
-            "output": {
-              "generic": [
-                {
-                  "values": [
-                    {
-                      "text_expression": {
-                        "concat": [
-                          {
-                            "scalar": "[Here ](https://)you will find further information on our standards and rules.\n\n<br />\n\n\n\nPlease do not hesitate to report an incident to management, Human Resources, or the Concerns and Appeals process."
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "response_type": "text",
-                  "selection_policy": "sequential"
-                }
-              ]
-            },
-            "handlers": [],
-            "resolver": {
-              "type": "end_action"
-            },
-            "variable": "step_245",
-            "condition": {
-              "eq": [
-                {
-                  "variable": "step_839"
-                },
-                {
-                  "value": "More information about the MINT Policies",
-                  "from_entity": "entity_36815"
-                }
-              ]
-            }
-          }
-        ],
-        "title": "I was sexually harassed.",
-        "action": "action_36262",
-        "boosts": [],
-        "handlers": [],
-        "condition": {
-          "intent": "action_36262_intent_24667"
-        },
-        "variables": [
-          {
-            "title": "[Here ](https://)you will find further information on our standa",
-            "variable": "step_245",
-            "data_type": "any"
-          },
-          {
-            "title": "Under this link you will find all further information and contac",
-            "variable": "step_330",
-            "data_type": "any"
-          },
-          {
-            "title": "Under this link you will find all further information and contac",
-            "variable": "step_707",
-            "data_type": "any"
-          },
-          {
-            "title": "Sexual harassment is unacceptable at {variable}. We won't tolera",
-            "variable": "step_839",
-            "data_type": "any"
-          }
-        ],
-        "launch_mode": "learning",
-        "next_action": "action_13900",
-        "topic_switch": {
-          "allowed_from": true,
-          "allowed_into": true,
-          "never_return": false
-        },
-        "disambiguation_opt_out": true
-      },
-      {
-        "type": "standard",
-        "steps": [
-          {
             "step": "step_658",
             "output": {
               "generic": []
@@ -4476,6 +4185,15 @@
                 }
               ]
             },
+            "next_step": "step_436"
+          },
+          {
+            "step": "step_436",
+            "handlers": [],
+            "resolver": {
+              "type": "continue"
+            },
+            "variable": "step_436",
             "next_step": "step_134"
           },
           {
@@ -4917,6 +4635,14 @@
               "enabled": false
             },
             "variable": "step_434",
+            "data_type": "any"
+          },
+          {
+            "title": "No response",
+            "privacy": {
+              "enabled": false
+            },
+            "variable": "step_436",
             "data_type": "any"
           },
           {
@@ -8320,7 +8046,7 @@
           }
         ],
         "launch_mode": "learning",
-        "next_action": "action_36262",
+        "next_action": "action_13900",
         "topic_switch": {
           "allowed_from": true,
           "allowed_into": true,
@@ -9367,32 +9093,6 @@
         "examples": []
       },
       {
-        "intent": "action_36262_intent_24667",
-        "examples": [
-          {
-            "text": "A colleague was sexually harassed"
-          },
-          {
-            "text": "I have been the victim of sexual harassment"
-          },
-          {
-            "text": "I was a victim of sexual harassment"
-          },
-          {
-            "text": "I was sexually harassed."
-          },
-          {
-            "text": "I was sexually molested."
-          },
-          {
-            "text": "I was victim of sexual harassment"
-          },
-          {
-            "text": "Sexual harassment"
-          }
-        ]
-      },
-      {
         "intent": "action_36476_intent_1528",
         "examples": []
       },
@@ -9687,27 +9387,6 @@
         "fuzzy_match": true
       },
       {
-        "entity": "entity_36815",
-        "values": [
-          {
-            "type": "synonyms",
-            "value": "Contact Employee Concerns",
-            "synonyms": []
-          },
-          {
-            "type": "synonyms",
-            "value": "Contact Talk About It@MINT",
-            "synonyms": []
-          },
-          {
-            "type": "synonyms",
-            "value": "More information about the MINT Policies",
-            "synonyms": []
-          }
-        ],
-        "fuzzy_match": true
-      },
-      {
         "entity": "entity_38400",
         "values": [
           {
@@ -9972,6 +9651,15 @@
         }
       },
       {
+        "title": "email_adress",
+        "privacy": {
+          "enabled": false
+        },
+        "variable": "email_adress",
+        "data_type": "string",
+        "description": ""
+      },
+      {
         "title": "employee_position",
         "variable": "employee_position",
         "data_type": "string",
@@ -10046,14 +9734,11 @@
       {
         "title": "google_maps_api_key",
         "privacy": {
-          "enabled": false
+          "enabled": true
         },
         "variable": "google_maps_api_key",
         "data_type": "string",
-        "description": "",
-        "initial_value": {
-          "scalar": "AIzaSyBROYYP9drCFh551pCzYoTTFvjbxaIGqds"
-        }
+        "description": ""
       },
       {
         "title": "hotel_1",
@@ -10254,7 +9939,10 @@
         },
         "variable": "hotel_reviews",
         "data_type": "string",
-        "description": ""
+        "description": "",
+        "initial_value": {
+          "scalar": "[        {         \"rating\": 5,         \"review\": \"I was blown away by the exceptional service at this hotel. From the moment I checked in, the staff were friendly, attentive, and went above and beyond to make my stay comfortable. The front desk team helped me with all my queries, and the housekeeping staff kept my room spotless. I highly recommend this hotel for its outstanding service.\"     },     {         \"rating\": 4,         \"review\": \"The fitness center at this hotel was top-notch. It was well-equipped with modern machines and free weights, and the staff were always available to assist. I appreciated the variety of equipment and the cleanliness of the facility. My only suggestion would be to add more classes or workshops, but overall, it was a great place to stay active during my trip.\"     },     {         \"rating\": 5,         \"review\": \"The complimentary breakfast at this hotel was a game-changer. The spread was impressive, with a wide variety of options to suit all tastes. The quality of the food was excellent, and the staff were friendly and efficient. I loved starting my day with a delicious meal, and it was a great way to fuel up for my daily adventures.\"     },     {         \"rating\": 4,         \"review\": \"I was a bit skeptical about the location at first, but it turned out to be one of the highlights of my stay. The hotel is situated in a quiet area, but it's still within walking distance to many popular attractions. I appreciated the convenience of being able to explore the city on foot, and the staff were always happy to provide recommendations and directions.\"     },     {         \"rating\": 3,         \"review\": \"I was a bit disappointed with the cancelation policy at this hotel. I had to cancel my stay at the last minute due to unforeseen circumstances, and I was charged a fee. I understand that the policy is in place, but I wish there was more flexibility. However, the hotel did offer to waive the fee, which was a nice gesture. Overall, it was a good stay, but I would recommend reading the fine print before booking.\"     } ]"
+        }
       },
       {
         "title": "hotel_selection_action",
@@ -10476,6 +10164,15 @@
         "description": ""
       },
       {
+        "title": "test_email",
+        "privacy": {
+          "enabled": false
+        },
+        "variable": "test_email",
+        "data_type": "string",
+        "description": ""
+      },
+      {
         "title": "travel_destination",
         "privacy": {
           "enabled": false
@@ -10675,6 +10372,6 @@
   "assistant_id": "c542922a-76a7-4f2c-a3ca-046ec1baa5ad",
   "workspace_id": "bb2deeff-25d9-4872-9b7d-db234dce0819",
   "dialog_settings": {},
-  "next_snapshot_version": "1",
+  "next_snapshot_version": "5",
   "environment_id": "87e58156-1eed-4211-b2a5-e33c82c0b05b"
 }
