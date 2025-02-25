@@ -104,35 +104,38 @@ The creation of the Custom Extensions will be similar in all the cases:
 
 1. Click on the "Integrations" section in the left menu:
 
-![Integrations](https://github.com/user-attachments/assets/f1945c53-7e9a-4e3c-bb33-bc127732adaf)
+![Integrations](images/customextension_integrations.png)
 
 2. Click "Build Custom Extension" button:
 
 ![BuildCustomExtension](images/customextension_buildcustomextension.png)
+![BuildCustomExtension](images/customextension_buildcustomextension.png)
 
 3. Click "Next" button on the "Get Started" section:
-
+   
 ![CustomExtension](images/customextension_getstarted.png)
-
+ 
 4. Specify a name for the Custom Extension, such as "Watsonx Deployed Prompt":
-
+ 
 ![BasicInformation](images/customextension_basicinformation.png)
 
 5. Upload the corresponding OpenAPI file:
-
+   
 ![ImportOpenAPI](images/customextension_importopenapi.png)
 
 6. Click "Finish" button:
 
 ![ReviewExtension](images/customextension_reviewextension.png)
+![ReviewExtension](images/customextension_reviewextension.png)
 
 Once you have created the extension, you need to add it to your assistant to use it. To do this, click the "Add" button:
 
 ![AddExtension](images/customextension_addextension.png)
+![AddExtension](images/customextension_addextension.png)
 
 In the "Authentication" section, specify the required method and parameters:
 
-![Authentication](https://github.com/user-attachments/assets/9f5ccf82-c40f-4c29-a47b-e3f742950068)
+![Authentication](images/customextension_authentication.png)
 
 - To add the ElasticSearch extension, you will need to use "Basic auth", specifying the username and password.
 - For the other extensions, you will need to use "OAuth 2.0" and specify the API key
