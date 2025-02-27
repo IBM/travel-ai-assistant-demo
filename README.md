@@ -140,6 +140,8 @@ In the "Authentication" section, specify the required method and parameters:
 
 ### Creating / Importing Watsonx.AI project
 
+Create a new watsonx.ai project and select `local file` on the left side. Upload the project ZIP file from `./watsonx Project/RagNova-Demo.zip`
+![Import](images/watsonx_project_import.png)
 ### Importing the Actions
 
 
