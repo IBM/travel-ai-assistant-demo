@@ -105,35 +105,35 @@ The creation of the Custom Extensions will be similar in all the cases:
 
 1. Click on the "Integrations" section in the left menu:
 
-![Integrations](https://github.com/user-attachments/assets/f1945c53-7e9a-4e3c-bb33-bc127732adaf)
+![Integrations](images/customextension_integrations.png)
 
 2. Click "Build Custom Extension" button:
 
-![BuildCustomExtension](https://github.com/user-attachments/assets/12384bc4-4aba-4141-9235-cb84c4ce5db7)
+![BuildCustomExtension](images/customextension_buildcustomextension.png)
 
 3. Click "Next" button on the "Get Started" section:
    
-![CustomExtension](https://github.com/user-attachments/assets/b9a878f0-eddb-48d5-88e4-9ec34a2a58f0)
+![CustomExtension](images/customextension_getstarted.png)
  
 4. Specify a name for the Custom Extension, such as "Watsonx Deployed Prompt":
  
-![BasicInformation](https://github.com/user-attachments/assets/7bcd69e5-541e-4ff0-9895-76b82014157a)
+![BasicInformation](images/customextension_basicinformation.png)
 
 5. Upload the corresponding OpenAPI file:
    
-![ImportOpenAPI](https://github.com/user-attachments/assets/1a16682c-4d94-4888-bdd3-6c6f7fab8553)
+![ImportOpenAPI](images/customextension_importopenapi.png)
 
 6. Click "Finish" button:
 
-![ReviewExtension](https://github.com/user-attachments/assets/cdf9e044-b6ec-4ebd-8416-0b32ebad0162)
+![ReviewExtension](images/customextension_reviewextension.png)
 
 Once you have created the extension, you need to add it to your assistant to use it. To do this, click the "Add" button:
 
-![AddExtension](https://github.com/user-attachments/assets/c849dba3-8d60-4416-97ec-51ce9fb21cfa)
+![AddExtension](images/customextension_addextension.png)
 
 In the "Authentication" section, specify the required method and parameters:
 
-![Authentication](https://github.com/user-attachments/assets/9f5ccf82-c40f-4c29-a47b-e3f742950068)
+![Authentication](images/customextension_authentication.png)
 
 - To add the ElasticSearch extension, you will need to use "Basic auth", specifying the username and password.
 - For the other extensions, you will need to use "OAuth 2.0" and specify the API key
