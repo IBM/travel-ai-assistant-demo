@@ -94,11 +94,12 @@ For further questions, reach out on slack or mail to `janik.buecher@ibm.com`
 For further questions, reach out on slack or mail to `janik.buecher@ibm.com`
 
 You need the json files stored in the `extensions` folder:
--  `GoogleMapsAPI.json`: connects to the Google Maps API to search for places near a given location and to perform a search for places.
--  `elasticsearch-generic-openapi.json`: enables connection and querying of the ElasticSearch database.
--  `openapi_emailgen.json`: calls a prompt deployed on Watson Machine Learning to generate an email based on parameters such as hotel name, travel start and end dates, and reason for travel.
--  `openapi_watsonx_reviews_2.json`: calls a prompt deployed on Watson Machine Learning to generate a summary of hotel reviews.
--  `watsonx-deployed-prompt-qa-rag-openapi.json`: calls a prompt deployed to build an answer based on the collected information.
+
+- `GoogleMapsAPI.json`: connects to the Google Maps API to search for places near a given location and to perform a search for places.
+- `elasticsearch-generic-openapi.json`: enables connection and querying of the ElasticSearch database.
+- `openapi_emailgen.json`: calls a prompt deployed on Watson Machine Learning to generate an email based on parameters such as hotel name, travel start and end dates, and reason for travel.
+- `openapi_watsonx_reviews_2.json`: calls a prompt deployed on Watson Machine Learning to generate a summary of hotel reviews.
+- `watsonx-deployed-prompt-qa-rag-openapi.json`: calls a prompt deployed to build an answer based on the collected information.
 
 The creation of the Custom Extensions will be similar in all the cases:
 
@@ -112,15 +113,15 @@ The creation of the Custom Extensions will be similar in all the cases:
 ![BuildCustomExtension](images/customextension_buildcustomextension.png)
 
 3. Click "Next" button on the "Get Started" section:
-   
+
 ![CustomExtension](images/customextension_getstarted.png)
- 
+
 4. Specify a name for the Custom Extension, such as "Watsonx Deployed Prompt":
- 
+
 ![BasicInformation](images/customextension_basicinformation.png)
 
 5. Upload the corresponding OpenAPI file:
-   
+
 ![ImportOpenAPI](images/customextension_importopenapi.png)
 
 6. Click "Finish" button:
