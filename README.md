@@ -158,6 +158,7 @@ In the "Authentication" section, specify the required method and parameters:
 
    ![Elastic Search](images/customextension_rag_elastic.png)
    ![Watsonx RAG](images/customextension_rag_watsonx.png)
+   ![Watsonx RAG 2](images/customextension_rag_watsonx_2.png)
 
 3. Email Generation:
 
